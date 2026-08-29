@@ -10,7 +10,7 @@
 </head>
 <body><div id="app"></div>
 <script>
-const API='https://api.mangadex.org',app=document.querySelector('#app');let page=0,lastTotal=0,currentManga=null,currentChapters=[];
+const API='/api',app=document.querySelector('#app');let page=0,lastTotal=0,currentManga=null,currentChapters=[];
 const el=(tag,props={},children=[])=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(props)){if(k==='class')n.className=v;else if(k==='text')n.textContent=v;else if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else if(v!==null&&v!==false)n.setAttribute(k,v)}for(const c of children)n.append(c);return n};
 const loading=(dark=false)=>{app.className=dark?'reader':'';app.replaceChildren(el('div',{class:'status'},[el('div',{class:'spinner'}),el('div',{text:'Memuat…'})]))};
 const request=async path=>{const r=await fetch(API+path);if(!r.ok)throw Error(`MangaDex merespons ${r.status}`);return r.json()};
